@@ -7,6 +7,10 @@ import { OnboardingProgramComponent } from './components/onboarding-program/onbo
 import { TxFormComponent } from './components/onboarding-program/tx-form/tx-form.component';
 import { HeaderComponent } from './components/onboarding-program/header/header.component';
 
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { TxService } from './service/tx.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -16,9 +20,11 @@ import { HeaderComponent } from './components/onboarding-program/header/header.c
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [TxService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
