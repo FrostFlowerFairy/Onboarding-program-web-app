@@ -1,0 +1,25 @@
+  
+  .col-button{
+       margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+  }
+  .buttonc{
+    height: 200px;
+    position: relative;
+  
+  }
+  
+  .fs-4{
+      color: #ff9e44;
+      font-weight: bold;
+      word-break: keep-all !important;
+  }
+  
+  
+  .form-select{
+      font-size: 18px;
+  }

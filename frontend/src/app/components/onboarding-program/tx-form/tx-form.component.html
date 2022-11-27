@@ -1,17 +1,35 @@
 <div class="form-group">
-    <label for="to_address">Receiver's Public Address:</label>
-    <input type="text" name="to_address" id="to_address" [(ngModel)]="address" class="form-control" placeholder="Enter public address here" required autofocus />
-    <br />
-    <label for="selectedProgram">Select program:</label>
-    <select id="selectedProgram" [(ngModel)]="selectedProgram" (change)="changeAmount()" required>
-        <option *ngFor="let program of programs">
-            {{program}}
-        </option>
-    </select>
-    <br />
-    <br />
-    <label for="amount">Mitocell amount:</label>
-    <input type="number" id="amount" name="amount" [(ngModel)]="amount" class="form-control" min="0" placeholder="Enter the mitocell amount here" disabled required />
-    <br />
-    <button (click)="broadcastTX()">Send</button>
+    <div class="row">
+        <div class="col p-2 mb-3 text-center">
+            <h1><span class="fs-4">Onboarding programs</span></h1>
+        </div>
+    </div>
+    <div class="row"> 
+        <div class="col">
+            <label for="to_address" class="form-label">Receiver's Address:</label>
+            <input type="text" name="to_address" id="to_address" [(ngModel)]="address" class="form-control" placeholder="Enter public address here" required autofocus />
+        </div>
+        <div class="col" style="margin-top:30px;">
+            <label for="selectedProgram" class="form-label">Onboarding Program:</label>
+            <select id="selectedProgram" [(ngModel)]="selectedProgram" (change)="changeAmount()" required>
+                <option *ngFor="let program of programs">
+                    {{program}}
+                </option>
+            </select>
+        </div>
+        <div class="col" style="margin-top:30px;">
+            <label for="amount" class="form-label">Mitocell amount:</label>
+            <input type="number" id="amount" name="amount" [(ngModel)]="amount" class="form-control" min="0" placeholder="Enter the mitocell amount here" disabled required />
+        </div>
+        <div class="buttonc">
+            <div class="col-button">
+                <button class="btn btn-warning btn-lg"  (click)="broadcastTX()">Send</button>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col p-2 mb-3 text-center">
+            <h3><span class="fs-4"><b>{{ addressBalanceTxt }}</b></span></h3>
+        </div>
+    </div>
 </div>

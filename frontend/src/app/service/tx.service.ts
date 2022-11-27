@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { TX } from '../models/tx.model';
 import { Observable } from 'rxjs';
-import { goapi } from './api';
+import { goapi, mitoapi } from './api';
 
 export const HTTP_OPTIONS = {
   headers: new HttpHeaders({
@@ -24,12 +24,11 @@ export class TxService {
 
   broadcastTx(tx: TX): Observable<any>
   {
-    // http:localhost:8080/mitocell
-    console.log("post")
-    console.log(tx)
-    console.log(`${goapi}mitocell`) 
-    var output = this.http.post<any>(`${goapi}mitocell`, tx);
-    console.log(output);
-    return output;
+    return this.http.post<any>(`${goapi}mitocell`, tx);
+  }
+
+  getBalance(address: string): Observable<any>
+  {
+    return this.http.get<any>(`${mitoapi}${address}/by_denom?denom=mitocell`);
   }
 }

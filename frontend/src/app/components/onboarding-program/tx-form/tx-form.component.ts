@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { TX } from 'src/app/models/tx.model';
 import { TxService } from 'src/app/service/tx.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-tx-form',
@@ -21,15 +22,27 @@ export class TxFormComponent {
 
   address: string = "";
 
+  addressBalanceTxt: string = "";
+
   changeAmount() {
-    if(this.selectedProgram === "Initial Launch")
-    {
-      this.amount = this.amounts[0];
-    }
-    else if (this.selectedProgram === "Referral")
-    {
-      this.amount = this.amounts[1];
-    }
+    this.amount = this.selectedProgram === "Initial Launch"?this.amounts[0]:this.amounts[1];
+  }
+
+  getAccountBalance(address: string)
+  {
+    this.txService.getBalance(address).subscribe(
+      (res: any) => {
+        this.addressBalanceTxt = address + "'s balance: " + res.balance.amount + " " + res.balance.denom;
+        Swal.fire("TX Successful!", this.addressBalanceTxt, 'success')
+      }
+    );
+  }
+
+  resetForm()
+  {
+    this.amount = 0;
+    this.selectedProgram = "";
+    this.address = "";
   }
 
   broadcastTX()
@@ -41,9 +54,9 @@ export class TxFormComponent {
     this.txService.broadcastTx(tx).subscribe(
       (res: any) => {
         console.log(res);
+        this.getAccountBalance(this.address);
+        this.resetForm();
       }
     );
-    this.address = "";
-    this.amount = 0;
   }
 }
