@@ -1,3 +1,10 @@
+// Code originality: 50 % 
+// I used lot of third party code from cosmos SDK and broadcastTx function is partially inspired from go-client section in ignite but I made multiple changes.
+// Moreover, there are no tutorials or resources on how to broadcast a coin tx with go (you can search it). I have read the cosmos docs, so I directly looked 
+// at Cosmos SDK code to find the msg, coin and math type. Additonally, majority of gin stuff is mine (middleware, mitocell tx struct and main) and mitocell tx is 
+// partially mine (<50%) with other code directly from cosmos SDK (github repo).
+// Third-party libraries: bankTypes, cosmosTypes and cosmosMath (Cosmos SDK), cosmosclient (ignite) and gin
+
 package main
 
 import (
@@ -25,19 +32,17 @@ func CORSMiddleware() gin.HandlerFunc {
         c.Header("Access-Control-Allow-Credentials", "true")
         c.Header("Access-Control-Allow-Headers", "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With")
         c.Header("Access-Control-Allow-Methods", "POST,HEAD,PATCH, OPTIONS, GET, PUT")
-
-        // we do not allow options
+	    
         if c.Request.Method == "OPTIONS" {
             c.AbortWithStatus(204)
             return
         }
 
-        // forward request to next handler
         c.Next()
     }
 }
 
-// Get the address of onboarding-program account
+// Get the address of onboarding-program account 
 var addressPrefix = "mito"
    
 var cosmos, err = cosmosclient.New(
