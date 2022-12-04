@@ -15,9 +15,9 @@ Daljeet Singh
 
 ## Installation and Setup Instructions 
 
-**Note: You will need [npm](https://nodejs.org/en/) and [Angular CLI](https://angular.io/cli) installed globally on your machine.**
-
 ### Frontend (Angular) -
+
+**Note: You will need [npm](https://nodejs.org/en/) and [Angular CLI](https://angular.io/cli) installed globally on your machine.**
 
 #### Installation:
 
