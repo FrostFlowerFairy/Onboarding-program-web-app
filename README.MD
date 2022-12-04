@@ -45,5 +45,9 @@ Open `http://localhost:4200/` to view it in the browser
 
 `go run .` or `go run main.go`
 
+# License
+MIT License
+Copyright (c) 2022 Daljeet Singh
 
+Refer to **LICENSE** file for full information.
 
