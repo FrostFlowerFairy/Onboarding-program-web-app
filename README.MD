@@ -45,6 +45,10 @@ Open `http://localhost:4200/` to view it in the browser
 
 `go run .` or `go run main.go`
 
+## Gif of the web app
+
+![f](https://github.com/Dev-Daljeet/Screenshots/blob/master/onboarding_program_app/program-app.gif?raw=true)
+
 # License
 MIT License
 Copyright (c) 2022 Daljeet Singh
